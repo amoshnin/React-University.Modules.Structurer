@@ -1,0 +1,27 @@
+{
+  "install": {
+    "command": "yarn --frozen-lockfile --silent"
+  },
+  "build": {
+    "command": "yarn build",
+    "args": []
+  },
+  "test": {
+    "projects": [
+      "docs",
+      "web",
+      "server",
+      "integration-tests",
+      "base module",
+      "mc mf pull",
+      "repo:degree",
+      "repo:user",
+      "repo:graph",
+      "repo:api",
+      "sql utils"
+    ],
+    "dont-run": [],
+    "command": "yarn test",
+    "args": ["--coverage", "--runInBand"]
+  }
+}

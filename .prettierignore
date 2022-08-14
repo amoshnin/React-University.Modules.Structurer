@@ -1,0 +1,14 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+*.mdx
+/references
+openapi-docs.json
+
+# cypress reporters
+apps/web-e2e/reporters/*.js
+!apps/web-e2e/reporters/cypress.js
+
+# github telegram build output
+.github/actions/telegram/dist

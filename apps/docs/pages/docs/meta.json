@@ -1,0 +1,22 @@
+{
+  "index": "Introduction",
+  "getting-started": {
+    "title": "Getting Started",
+    "hidden": true
+  },
+  "core-concepts": {
+    "title": "Core Concepts",
+    "hidden": true
+  },
+  "developer-guide": "Developer Guide",
+  "changelog": "Changelog",
+  "troubleshooting": {
+    "title": "Troubleshooting",
+    "hidden": true
+  },
+  "glossary": "Glossary",
+  "faq": {
+    "title": "FAQ",
+    "hidden": true
+  }
+}

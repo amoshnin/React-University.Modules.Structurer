@@ -1,0 +1,23 @@
+{
+  "build": {
+    "title": "Build",
+    "hidden": true
+  },
+  "setup": {
+    "title": "Setup"
+  },
+  "build-prerequisites": {
+    "title": "Build prerequisites"
+  },
+  "tests": {
+    "title": "Tests",
+    "hidden": true
+  },
+  "yarn-scripts": {
+    "title": "Yarn scripts",
+    "hidden": true
+  },
+  "contributing": "Contributing",
+  "tech-stack": "Tech Stack",
+  "deployment": "Deployment"
+}

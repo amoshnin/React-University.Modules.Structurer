@@ -1,0 +1,79 @@
+name: auto deploy
+
+on:
+  push:
+    branches:
+      - main
+      - d/docs
+      - d/dev
+      - d/cy
+      - d/srv
+      - d/web
+
+jobs:
+  cy-reporter:
+    if: |
+      github.ref_name == 'd/cy' ||
+      github.ref_name == 'd/dev' ||
+      github.ref_name == 'main'
+    uses: ./.github/workflows/deploy-heroku-container.yml
+    with:
+      build_command: yarn docker:cy-reporter
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+  server-dev:
+    if: |
+      github.ref_name == 'd/srv' ||
+      github.ref_name == 'd/dev' ||
+      github.ref_name == 'main'
+    uses: ./.github/workflows/deploy-heroku-container.yml
+    with:
+      build_command: yarn docker:server
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+  web-dev:
+    if: |
+      github.ref_name == 'd/dev' ||
+      github.ref_name == 'd/web' ||
+      github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npx vercel --token ${TOKEN} --prod
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }} #Required
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_DEV_PROJECT_ID }} #Required
+
+  docs:
+    if: |
+      github.ref_name == 'd/docs' ||
+      github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npx vercel --token ${TOKEN} --prod
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }} #Required
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_DOCS_PROJECT_ID }} #Required
+
+  telegram:
+    needs: [docs, web-dev, server-dev, cy-reporter]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/telegram
+        with:
+          telegram-token: ${{ secrets.TELEGRAM_TOKEN }}
+          telegram-chat-id: ${{ secrets.TELEGRAM_GROUP }}
+          needs: ${{ toJSON(needs) }}

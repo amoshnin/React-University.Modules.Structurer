@@ -1,0 +1,19 @@
+{
+  "*": {
+    "//": "Hide all the links from the sidebar or navbar, and disable ToC and Sidebar for these pages.",
+    "hidden": true,
+    "theme": {
+      "toc": false,
+      "sidebar": false,
+      "typesetting": "article"
+    }
+  },
+  "milestone-1": "Milestone 1: Ideation",
+  "milestone-2": "Milestone 2: Prototyping",
+  "milestone-3": {
+    "title": "Milestone 3: Refinement",
+    "theme": {
+      "toc": true
+    }
+  }
+}

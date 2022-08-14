@@ -1,0 +1,12 @@
+{
+  "degree": ["modules"],
+  "user": [
+    "savedDegrees",
+    "savedGraphs",
+    "mainDegree",
+    "mainGraph",
+    "modulesDone",
+    "modulesDoing"
+  ],
+  "graph": ["user", "degree", "modulesPlaced", "modulesHidden"]
+}

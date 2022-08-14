@@ -1,0 +1,144 @@
+# Changelog
+
+Detailed changelog [here].
+
+## v0.9.0
+
+- OpenAPI support for API routes.
+- Generate swagger docs for OpenAPI API routes.
+- Pass and stabilize all Cypress end-to-end tests.
+- Persist Cypress run data remotely.
+- Graph nodes are styled correctly after its states are changed.
+
+## v0.8.0
+
+> 24 July 2022
+
+- Implement login with GitHub/Google/Facebook and deprecate Auth0 login
+method.
+- Integrate redux into React Flow.
+- Improve performance of graph interactions.
+- Add module state guide.
+- Retire vanilla HTTP endpoints.
+- Improve quality of current end-to-end tests.
+
+## v0.7.3 (Milestone 3)
+
+> 19 July 2022
+
+- Use external providers for authentication (which requires a database
+migration).
+
+## v0.7.2
+
+> 18 July 2022
+
+- Remove frontend debug components.
+- Add a module state guide.
+
+## v0.7.1
+
+> 17 July 2022
+
+- Fix production tRPC base url.
+
+## v0.7.0
+
+> 17 July 2022
+
+- Set up separate deployment for development.
+- Implement graph add/edit/delete capabilities to frontend.
+- Set module status by right-clicking a graph node.
+- Use tRPC for type-safe API calls from frontend.
+- Use mocks for faster testing.
+
+## v0.6.0
+
+> 10 July 2022
+
+<h3>Core business logic 🚀</h3>
+
+- Add/remove modules to the graph and see relations.
+- Create and edit degrees.
+- Edit modules done and modules doing.
+- Essentially can plan out one full degree.
+
+<h3>Changes</h3>
+
+- Persist frontend state in database.
+- Use `dagre` library to draw edges and position nodes.
+- Create a migration handler.
+- Improve server build speed (4x faster).
+- Improve telegram bot CI reporting with custom GitHub Action.
+- Add more automated frontend end-to-end testing.
+- Sanitize `Module.fulfillRequirements` database column.
+
+## v0.5.0
+
+> 4 July 2022
+
+- Create new `Module` entity to execute our business logic.
+    - Has more properties than `ModuleCondensed` but fewer properties than `ModuleFull`
+- Add more API endpoints.
+- Use matrix strategy to run CI in parallel for different nx projects.
+- Start using docker for database.
+
+## v0.4.0 (Milestone 2)
+
+> 26 June 2022
+
+- Implement customized basic context menu that replaces the default browser
+  context menu.
+- Add insert module into graph functionality in frontend.
+- Implement degree builder in frontend.
+- Standardize API endpoints and update API docs.
+- Set up server testing with supertest.
+- Add coverage reports.
+- Add badges to Github README.
+- Increase test coverage.
+
+## v0.3.0
+
+> 19 June 2022
+
+- Add detailed degrees/modules/graphs tab to user profile modal.
+- Create and load a DB user after signing up via Auth0.
+- Clicking a search result now opens a module info modal.
+- Improve aesthetics of frontend.
+- Add a util to generate schema, based on a sample API response.
+- Update API docs for Module entity.
+
+## v0.2.0
+
+> 12 June 2022
+
+- Suggest modules, given many module codes.
+- Migrate from Turborepo to Nx for project build system.
+- API endpoint to toggle a module state in a graph.
+- General refactoring: each entity's repository is now isolated in
+  building and testing.
+
+## v0.1.0
+
+> 5 June 2022
+
+- Implement module suggestion (off a single module).
+- Implement more server API functions (create/list/delete for User/Degree/Graph).
+- Setup Auth0 for user authentication.
+- Make tests more modular.
+- Setup auto-changelog to prep for weekly release notes.
+- Extend documentation’s build guide to support fresh MacOS installs.
+- Complete community standards.
+
+## v0.0.0 (Milestone 1)
+
+> 29 May 2022
+
+- Deploy frontend to Vercel, backend to Heroku Nodejs, and database to Heroku PostgreSQL.
+- Implement several database methods.
+- Implement first server API endpoint to search for a module.
+- Add search module functionality to frontend.
+- Start documentation website.
+- Write tests for all database functions.
+
+[here]: https://github.com/modtree/modtree/blob/main/CHANGELOG.md

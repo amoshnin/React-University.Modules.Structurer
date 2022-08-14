@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+}
+
+body {
+  --nextra-primary-hue: 15deg;
+}
+
+.dark body {
+}
+
+sub > p {
+  @apply text-xl text-gray-500;
+}
+
+.logo,
+.dark .logo {
+  background-image: url('/banner-light-bg.svg');
+  @apply bg-auto bg-no-repeat h-12 w-64;
+}
+
+.dark .logo {
+  background-image: url('/banner-dark-bg.svg');
+}
+
+ol > li > ol,
+ul > li > ol,
+ol > li > ul,
+ul > li > ul {
+  @apply my-0;
+}
+
+main > ul > li:last-child {
+  /* @apply mb-2 bg-blue-100; */
+}

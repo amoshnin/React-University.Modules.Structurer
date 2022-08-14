@@ -1,0 +1,38 @@
+name: release deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  server-prod:
+    uses: ./.github/workflows/deploy-heroku-container.yml
+    with:
+      build_command: yarn docker:server --prod
+    secrets:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+  web-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npx vercel --token ${TOKEN} --prod
+        env:
+          TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }} #Required
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_PROD_PROJECT_ID }} #Required
+
+  telegram:
+    needs: [web-prod, server-prod]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/telegram
+        with:
+          telegram-token: ${{ secrets.TELEGRAM_TOKEN }}
+          telegram-chat-id: ${{ secrets.TELEGRAM_GROUP }}
+          needs: ${{ toJSON(needs) }}

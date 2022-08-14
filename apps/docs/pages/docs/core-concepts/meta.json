@@ -1,0 +1,4 @@
+{
+  "typeorm": "TypeORM",
+  "postgresql": "PostgreSQL"
+}

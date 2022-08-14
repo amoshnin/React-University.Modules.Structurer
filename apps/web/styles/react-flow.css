@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.react-flow__pane {
+  @apply select-none;
+}
+
+.react-flow__node {
+  @apply bg-transparent rounded-lg p-0.5;
+}
+
+.react-flow__node.selected {
+  @apply ring-4 ring-modtree-400/75;
+}
+
+.react-flow__attribution {
+  @apply hidden;
+}

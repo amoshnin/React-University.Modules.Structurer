@@ -1,0 +1,42 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "next-env.d.ts",
+    "pages",
+    "store",
+    "components",
+    "utils",
+    "ui",
+    "types/**/*.ts"
+  ],
+  "compilerOptions": {
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "paths": {
+      "@modtree/types": ["../../libs/types/src/index.ts"],
+      "@modtree/connect": ["../../libs/connect/src/index.ts"],
+      "@modtree/trpc-openapi": ["../../libs/trpc-openapi/src/index.ts"],
+      "@modtree/repos": ["../../libs/repos/src/index.ts"],
+      "@modtree/typeorm-config": ["../../libs/typeorm-config/src/index.ts"],
+      "@modtree/server": ["../server/src/index.ts"],
+      "@modtree/utils": ["../../libs/utils/src/index.ts"],
+      "@modtree/test-env/jest": ["../../libs/test-env/src/matcher-types.ts"],
+      "@/components/*": ["components/*"],
+      "@/store/*": ["store/*"],
+      "@/ui/*": ["ui/*"],
+      "@/styles/*": ["styles/*"],
+      "@/utils/*": ["utils/*"],
+      "@/flow/*": ["flow/*"]
+    },
+    "allowJs": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "exclude": ["node_modules", "jest.config.ts"]
+}
